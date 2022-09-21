@@ -23,6 +23,12 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'io.vavr:vavr:0.10.4'
+	implementation 'commons-io:commons-io:2.11.0'
+	implementation 'com.amazonaws:aws-java-sdk-ec2:1.12.305'
+	implementation 'com.amazonaws:aws-java-sdk-s3:1.12.305'
+	implementation 'com.amazonaws:aws-java-sdk-sqs:1.12.305'
 }
 
 tasks.named('test') {
