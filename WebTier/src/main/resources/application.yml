@@ -9,8 +9,8 @@ s3:
     response: cse546-project1-results-bucket
 
 login:
-  access: AKIASBVIRTQOAE3QVKRE
-  secret: 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
+  access:
+  secret:
   keypair: 546-keypair
   sg: sg-070982a4b1f57489c
 
