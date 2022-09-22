@@ -27,7 +27,7 @@ public class LoadBalancerService {
 
     private void scaleInAndOut() {
         Try.run(() -> {
-            var runningAppInstanceCount = ec2Helper.getInstancesCount();
+            var runningAppInstanceCount = ec2Helper.getInstancesCount() - 1;
             log.info("Number of Running App Instances: " + runningAppInstanceCount);
 
             sqsHelper.getSQSMessageCount().ifPresent(count -> {
