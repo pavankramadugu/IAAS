@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -30,6 +29,6 @@ public class WebTierController {
 
     @GetMapping("/results")
     public ResponseEntity<Map<String, String>> getResults() {
-        return ResponseEntity.ok().body(new HashMap<>());
+        return ResponseEntity.ok().body(webTierService.getResults());
     }
 }

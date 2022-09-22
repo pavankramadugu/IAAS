@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +37,10 @@ public class WebTierService {
                 .getOrElse(new HashMap<>());
     }
 
+    public Map<String, String> getResults() {
+        return imageModelResultMap;
+    }
+
     private Map<String, String> getResultsFromResponseQueue(List<String> imageNames) {
         while (!imageModelResultMap.keySet().containsAll(imageNames)) {
             log.info("Waiting to read classification response from Response Queue");
@@ -48,6 +54,8 @@ public class WebTierService {
             });
         }
 
-        return imageModelResultMap;
+        return imageNames.stream()
+                .filter(imageModelResultMap::containsKey)
+                .collect(Collectors.toMap(Function.identity(), imageModelResultMap::get));
     }
 }
