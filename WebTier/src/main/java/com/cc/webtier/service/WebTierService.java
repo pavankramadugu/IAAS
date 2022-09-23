@@ -49,7 +49,7 @@ public class WebTierService {
             resultMessages.forEach(message -> {
                 var values = message.getBody().split(",");
                 log.info("Setting Response in Map");
-                imageModelResultMap.put(values[1], values[2]);
+                imageModelResultMap.put(values[0], values[1]);
                 sqsHelper.deleteMessage(message);
             });
         }

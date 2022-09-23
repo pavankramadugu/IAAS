@@ -1,2 +1,2 @@
 #!/bin/bash
-su ubuntu -c 'cd /home/ubuntu/classifier && java -jar app-tier-0.0.1-SNAPSHOT.jar'
+su ubuntu -c 'cd /home/ubuntu/classifier && java -jar AppTier-1.0-SNAPSHOT.jar'

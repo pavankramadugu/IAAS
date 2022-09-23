@@ -15,7 +15,7 @@ login:
   sg: sg-0cc021372a3cb502f
 
 ami:
-  id: ami-0d5b68f6f974e8e0e
+  id: ami-0b3af756c259667df
 
 ec2:
   max-instances: 19
