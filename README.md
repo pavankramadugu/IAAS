@@ -28,7 +28,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-Steps to install and set up your app.
+Steps to install and set up the app.
 
 1. Clone the repo
    ```sh
