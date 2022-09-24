@@ -70,7 +70,7 @@ Upload the images to ```localhost:8080```. Please wait for the model to respond.
     <tr>
       <td align="center"><a href="https://pavankramadugu.github.io/"><img src="https://avatars.githubusercontent.com/u/73785007?v=4" width="100px;" alt=""/><br /><sub><b>Pavan K Ramadugu</b></td>
       <td align="center"><a href="https://github.com/snehalchaudhari98"><img src="https://avatars.githubusercontent.com/u/31732637?v=4" width="100px;" alt=""/><br /><sub><b>Snehal Chaudhari</b></td>
-      <td align="center"><a href="https://github.com/JaydeepBhoite"><img src="https://avatars.githubusercontent.com/u/112657685?v=4" width="100px;" alt=""/><br /><sub><b>Jaideep Bhoite</b></a></td>
+      <td align="center"><a href="https://github.com/JaydeepBhoite"><img src="https://avatars.githubusercontent.com/u/112657685?v=4" width="100px;" alt=""/><br /><sub><b>Jaydeep Bhoite</b></a></td>
     </tr>
 
   </tbody>
