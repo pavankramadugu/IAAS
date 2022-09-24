@@ -58,4 +58,9 @@ public class WebTierService {
                 .filter(imageModelResultMap::containsKey)
                 .collect(Collectors.toMap(Function.identity(), imageModelResultMap::get));
     }
+
+    public void clearResults(){
+        log.info("ClearResults()");
+        imageModelResultMap.clear();
+    }
 }

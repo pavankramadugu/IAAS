@@ -31,4 +31,10 @@ public class WebTierController {
     public ResponseEntity<Map<String, String>> getResults() {
         return ResponseEntity.ok().body(webTierService.getResults());
     }
+
+    @GetMapping("/clearResults")
+    public ResponseEntity<String> clearResults() {
+        webTierService.clearResults();
+        return ResponseEntity.ok().body("Cleared previous results");
+    }
 }
