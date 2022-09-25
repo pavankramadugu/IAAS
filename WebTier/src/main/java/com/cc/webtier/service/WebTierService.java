@@ -9,9 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -21,6 +19,8 @@ import java.util.stream.Collectors;
 public class WebTierService {
 
     private final Map<String, String> imageModelResultMap = new HashMap<>();
+    private final Queue<String> stringQueue = new LinkedList<>();
+    private int h_limit = 10;
 
     private final SQSHelper sqsHelper;
 
@@ -50,6 +50,10 @@ public class WebTierService {
                 var values = message.getBody().split(",");
                 log.info("Setting Response in Map");
                 imageModelResultMap.put(values[0], values[1]);
+                if(stringQueue.size() <= h_limit){
+                    stringQueue.poll();
+                }
+                stringQueue.add(message.getBody());
                 sqsHelper.deleteMessage(message);
             });
         }
@@ -59,8 +63,12 @@ public class WebTierService {
                 .collect(Collectors.toMap(Function.identity(), imageModelResultMap::get));
     }
 
+    public String getHistory(){
+        return stringQueue.toString();
+    }
+
     public void clearResults(){
-        log.info("ClearResults()");
+        log.debug("ClearResults()");
         imageModelResultMap.clear();
     }
 }

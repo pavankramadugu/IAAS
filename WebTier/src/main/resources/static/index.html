@@ -1,16 +1,69 @@
 <html>
 <head>
+	<link rel="stylesheet" href="style.css">
 </head>
+<title>Image Recognizer</title>
+<body >
+<h2>Image Recognition Service</h2><br>
+<!-- Upload  -->
+<div class="container">
+	<form method ="POST" id="file-upload-form" action="/imageUpload" class="uploader">
+		<input id="file-upload" type="file" name="fileUpload" accept="image/*"  onchange="showButton()" />
 
-<body>
-<h2>Image Recognition Service</h2>
-<h3>Upload Images</h3><br>
+		<label for="file-upload" id="file-drag">
+			<img id="file-image" src="#" alt="Preview" class="hidden">
+			<div id="start">
+				<i class="fa fa-download" aria-hidden="true"></i>
+				<div>Select a file or drag here</div>
+				<div id="notimage" class="hidden">Drop or browse an image</div>
+				<span id="file-upload-btn" class="btn btn-primary">Select an image</span>
+			</div>
+			<div id="response" class="hidden">
+				<div id="messages"></div>
+				<progress class="progress" id="file-progress" value="0">
+					<span>0</span>%
+				</progress>
+			</div>
+			<div>
+				<input id="send-image"   class="btn btn-primary" type="submit" value="Upload Image">
+				<!--			<input  disabled class="btn btn-primary" value="Test">-->
+			</div>
 
-<form method="POST" action="/imageUpload" enctype="multipart/form-data">
-		<input type="file" id="images" name="images" multiple><br><br>
+		</label>
+	</form>
 
-		<input type="submit" value="Upload"> click me to upload the files
-</form>
+</div>
 
+<div class="resultBtn" style='display:flex;'>
+	<form id="historyForm" method="GET" action="/results">
+		<p><input type="submit" class="resultBtnInput" value="Get Results"></p>
+	</form>
+
+	<form id="clearForm" method="GET" action="/clearResults">
+		<p><input type="submit" class="resultBtnInput"   value="Clear Results"></p>
+	</form>
+</div>
+
+
+<script src="script.js"></script>
+<script>
+	// $('file-upload').on('change', function(){
+	// 	if($(this).val() !== ""){
+	// 		$('send-image').show();
+	// 	}
+	// });
+	// $('file-upload').on('upload', function(){
+	// 	$("#send-image").disable = true;
+	// });
+
+	function showButton() {
+		// document.getElementById ("send-image").
+		// var btn = document.getElementById("send-image");
+		// btn.disabled = false;
+		// document.getElementById ("send-image").classList.remove("uhidden");
+		document.getElementById ("send-image").style.display = 'block';
+	}
+</script>
 </body>
 </html>
+`
