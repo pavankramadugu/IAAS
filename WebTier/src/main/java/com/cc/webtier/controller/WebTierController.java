@@ -22,7 +22,7 @@ public class WebTierController {
     private final WebTierService webTierService;
 
     @PostMapping("/imageUpload")
-    public ResponseEntity<Map<String, String>> imageUpload(@RequestParam("images") MultipartFile[] images) {
+    public ResponseEntity<Map<String, String>> imageUpload(@RequestParam("myfile") MultipartFile[] images) {
         log.info("Received Images for Classification");
         return ResponseEntity.ok().body(webTierService.processImages(images));
     }

@@ -1,21 +1,21 @@
 sqs:
   queue:
-    request: https://sqs.us-east-1.amazonaws.com/620247385745/iaas-request-sqs
-    response: https://sqs.us-east-1.amazonaws.com/620247385745/iaas-response-sqs
+    request: https://sqs.us-east-1.amazonaws.com/507560498503/iaas-request-sqs
+    response: https://sqs.us-east-1.amazonaws.com/507560498503/iaas-response-sqs
 
 s3:
   bucket:
-    request: iaas-request-bucket
-    response: iaas-response-bucket
+    request: iaas-546-request-bucket
+    response: iaas-546-response-bucket
 
 login:
   access:
   secret:
   keypair: 546-KeyPair
-  sg: sg-0cc021372a3cb502f
+  sg: sg-04dfc566df55fb731
 
 ami:
-  id: ami-0b3af756c259667df
+  id: ami-0dbce3445c08c89cf
 
 ec2:
   max-instances: 19

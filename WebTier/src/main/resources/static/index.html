@@ -8,7 +8,7 @@
 <!-- Upload  -->
 <div class="container">
 	<form method ="POST" id="file-upload-form" action="/imageUpload" class="uploader" enctype="multipart/form-data">
-		<input id="file-upload"  type="file" name="images"  name="fileUpload" accept="image/*"  onchange="showButton()" multiple/>
+		<input id="file-upload"  type="file" name="myfile" accept="image/*"  onchange="showButton()" multiple/>
 
 		<label for="file-upload" id="file-drag">
 			<img id="file-image" src="#" alt="Preview" class="hidden">
@@ -47,20 +47,7 @@
 
 <script src="script.js"></script>
 <script>
-	// $('file-upload').on('change', function(){
-	// 	if($(this).val() !== ""){
-	// 		$('send-image').show();
-	// 	}
-	// });
-	// $('file-upload').on('upload', function(){
-	// 	$("#send-image").disable = true;
-	// });
-
 	function showButton() {
-		// document.getElementById ("send-image").
-		// var btn = document.getElementById("send-image");
-		// btn.disabled = false;
-		// document.getElementById ("send-image").classList.remove("uhidden");
 		document.getElementById ("send-image").style.display = 'block';
 	}
 </script>

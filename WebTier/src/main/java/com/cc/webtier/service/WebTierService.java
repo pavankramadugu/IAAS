@@ -20,7 +20,7 @@ public class WebTierService {
 
     private final Map<String, String> imageModelResultMap = new HashMap<>();
     private final Queue<String> stringQueue = new LinkedList<>();
-    private int h_limit = 10;
+    private final int h_limit = 10;
 
     private final SQSHelper sqsHelper;
 
