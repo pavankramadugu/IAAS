@@ -7,8 +7,8 @@
 <h2>Image Recognition Service</h2><br>
 <!-- Upload  -->
 <div class="container">
-	<form method ="POST" id="file-upload-form" action="/imageUpload" class="uploader">
-		<input id="file-upload" type="file" name="fileUpload" accept="image/*"  onchange="showButton()" />
+	<form method ="POST" id="file-upload-form" action="/imageUpload" class="uploader" enctype="multipart/form-data">
+		<input id="file-upload"  type="file" name="images"  name="fileUpload" accept="image/*"  onchange="showButton()" multiple/>
 
 		<label for="file-upload" id="file-drag">
 			<img id="file-image" src="#" alt="Preview" class="hidden">

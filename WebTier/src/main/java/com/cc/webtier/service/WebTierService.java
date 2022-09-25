@@ -50,7 +50,7 @@ public class WebTierService {
                 var values = message.getBody().split(",");
                 log.info("Setting Response in Map");
                 imageModelResultMap.put(values[0], values[1]);
-                if(stringQueue.size() <= h_limit){
+                if(stringQueue.size() >= h_limit){
                     stringQueue.poll();
                 }
                 stringQueue.add(message.getBody());
@@ -69,6 +69,7 @@ public class WebTierService {
 
     public void clearResults(){
         log.debug("ClearResults()");
+        stringQueue.clear();
         imageModelResultMap.clear();
     }
 }
