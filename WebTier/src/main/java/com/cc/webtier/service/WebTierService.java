@@ -19,9 +19,6 @@ import java.util.stream.Collectors;
 public class WebTierService {
 
     private final Map<String, String> imageModelResultMap = new HashMap<>();
-    private final Queue<String> stringQueue = new LinkedList<>();
-    private final int h_limit = 10;
-
     private final SQSHelper sqsHelper;
 
     private final S3Helper s3Helper;
@@ -50,10 +47,6 @@ public class WebTierService {
                 var values = message.getBody().split(",");
                 log.info("Setting Response in Map");
                 imageModelResultMap.put(values[0], values[1]);
-                if(stringQueue.size() >= h_limit){
-                    stringQueue.poll();
-                }
-                stringQueue.add(message.getBody());
                 sqsHelper.deleteMessage(message);
             });
         }
@@ -63,13 +56,8 @@ public class WebTierService {
                 .collect(Collectors.toMap(Function.identity(), imageModelResultMap::get));
     }
 
-    public String getHistory(){
-        return stringQueue.toString();
-    }
-
-    public void clearResults(){
+    public void clearResults() {
         log.debug("ClearResults()");
-        stringQueue.clear();
         imageModelResultMap.clear();
     }
 }
