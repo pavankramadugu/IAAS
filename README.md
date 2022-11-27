@@ -58,7 +58,24 @@ The app should take images received from users as input and perform image recogn
 
 To facilitate the testing, a standard image dataset is provided at: [imagenet-100-updated.zip](https://canvas.asu.edu/courses/128579/files/51752784/download).
 
-Upload the images to ```localhost:8080```. Please wait for the model to respond.
+Upload the images to ```http://3.84.233.215:8080/imageUpload```. Please wait for the model to respond.
+
+For load-testing use following endpoint as url :- `http://3.84.233.215:8080/imageUpload`
+
+```yml
+sqs:
+  queue:
+    request: https://sqs.us-east-1.amazonaws.com/620247385745/iaas-request-sqs
+    response: https://sqs.us-east-1.amazonaws.com/620247385745/iaas-response-sqs
+
+s3:
+  bucket:
+    request: iaas-request-bucket
+    response: iaas-response-bucket
+
+elasticIP: 3.84.233.215:8080
+```
+
 
 ## Contributors
 

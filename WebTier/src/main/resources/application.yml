@@ -1,7 +1,7 @@
 sqs:
   queue:
-    request: https://sqs.us-east-1.amazonaws.com/867386276772/openstack-request-sqs
-    response: https://sqs.us-east-1.amazonaws.com/867386276772/openstack-response-sqs
+    request: https://sqs.us-east-1.amazonaws.com/867386276772/request
+    response: https://sqs.us-east-1.amazonaws.com/867386276772/response
 
 s3:
   bucket:
@@ -15,7 +15,7 @@ login:
   sg: sg-025612337724c49d7
 
 ami:
-  id: ami-084125967033d4294
+  id: ami-037b9a6ecfacdbc39
 
 ec2:
   max-instances: 19

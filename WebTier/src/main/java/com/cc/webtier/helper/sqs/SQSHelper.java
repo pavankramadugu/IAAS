@@ -50,6 +50,7 @@ public class SQSHelper {
                             .build();
                     amazonSQS.sendMessage(webTierProperties.getRequestQueue(), message);
                     log.info("Sent Image details to Queue");
+                    amazonSQS.shutdown();
                 })
                 .onFailure(ex -> log.error(ex.getMessage()));
     }
