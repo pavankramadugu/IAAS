@@ -4,11 +4,14 @@ image_result_map = dict()
 
 
 def process_images(images):
-    image_names = S3Helper.upload_images_to_S3(images)
-
+    image_names = []
     try:
-        for image in image_names:
-            SQSHelper.publish_message(image)
+        print("Uploading Images to S3 and SQS")
+        for image in images:
+            image_name = S3Helper.upload_file_to_s3(file=image)
+            SQSHelper.publish_message(image_name)
+            image_names.append(image_name)
+        print("Uploaded Images to S3 and SQS")
         return get_results_from_response_queue(image_names)
 
     except Exception as e:
@@ -17,7 +20,7 @@ def process_images(images):
 
 
 def get_results_from_response_queue(image_names):
-    while not set(image_names).issubset(image_result_map.keys()):
+    while True:
         print("Waiting to read classification response from Response Queue")
         result_messages = SQSHelper.read_messages_from_SQS()
 
@@ -26,7 +29,8 @@ def get_results_from_response_queue(image_names):
             image_result_map[values[0]] = values[1]
             SQSHelper.delete_message(message)
 
-    return {key: image_result_map[key] for key in image_names}
+        if all(item in list(image_result_map.keys()) for item in image_names):
+            return {key: image_result_map[key] for key in image_names}
 
 
 def clear_results():

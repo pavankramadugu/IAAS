@@ -29,14 +29,3 @@ def upload_file_to_s3(file):
 
     finally:
         s3.close()
-
-
-def upload_images_to_S3(images):
-    print("Uploading Images to S3")
-    file_list = []
-    for image in images:
-        upload_file_to_s3(file=image)
-        file_list.append(image.filename)
-    print("Successfully Uploaded Images to S3")
-
-    return file_list

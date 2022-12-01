@@ -1,18 +1,18 @@
 from flask import Flask, request
 from service import service
 from service.scaling import load_balancer
-from flask_apscheduler import APScheduler
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+executor = ThreadPoolExecutor(2)
 
 app = Flask(__name__)
 
-scheduler = APScheduler()
-scheduler.init_app(app)
-scheduler.start()
 
-
-@scheduler.task('interval', id='load_balancing_job', seconds=2)
 def load_balancing_job():
-    load_balancer.scale_in_and_out()
+    while True:
+        load_balancer.scale_in_and_out()
+        time.sleep(3)
 
 
 @app.route('/')
@@ -31,5 +31,7 @@ def clear_results():
     return service.clear_results()
 
 
+executor.submit(load_balancing_job)
+
 if __name__ == '__main__':
-    app.run()
+    app.run(reloader=False)
