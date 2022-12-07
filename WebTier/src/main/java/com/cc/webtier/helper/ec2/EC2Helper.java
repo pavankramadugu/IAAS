@@ -2,7 +2,6 @@ package com.cc.webtier.helper.ec2;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.regions.Regions;
-import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
 import com.amazonaws.services.ec2.model.*;
 import com.cc.webtier.properties.WebTierProperties;
@@ -23,15 +22,10 @@ import java.util.stream.IntStream;
 @Slf4j
 public class EC2Helper {
 
-    private final AmazonEC2 amazonEC2;
-
     private final WebTierProperties webTierProperties;
 
-    public EC2Helper(WebTierProperties webTierProperties, WebTierProperties webTierProperties1) {
-        this.amazonEC2 = AmazonEC2ClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(webTierProperties.getAwsCredentials()))
-                .withRegion(Regions.US_EAST_1).build();
-        this.webTierProperties = webTierProperties1;
+    public EC2Helper(WebTierProperties webTierProperties) {
+        this.webTierProperties = webTierProperties;
     }
 
     public Integer getInstancesCount() {
@@ -44,10 +38,13 @@ public class EC2Helper {
         describeInstancesRequest.setMaxResults(1000);
 
         var count = new AtomicInteger();
+        var amazonEC2 = AmazonEC2ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(webTierProperties.getAwsCredentials()))
+                .withRegion(Regions.US_EAST_1).build();
         amazonEC2.describeInstances(describeInstancesRequest)
                 .getReservations()
                 .forEach(reservation -> count.addAndGet(reservation.getInstances().size()));
-
+        amazonEC2.shutdown();
         return count.get();
     }
 
@@ -86,9 +83,13 @@ public class EC2Helper {
                 .withInstanceInitiatedShutdownBehavior(ShutdownBehavior.Terminate);
 
         Try.run(() -> {
+            var amazonEC2 = AmazonEC2ClientBuilder.standard()
+                    .withCredentials(new AWSStaticCredentialsProvider(webTierProperties.getAwsCredentials()))
+                    .withRegion(Regions.US_EAST_1).build();
             amazonEC2.runInstances(runInstancesRequest);
             sourceStream.close();
             log.info("Started EC2 Instance with Name: " + instanceName);
+            amazonEC2.shutdown();
         });
     }
 }

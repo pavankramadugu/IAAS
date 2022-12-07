@@ -37,7 +37,7 @@ Steps to install and set up the app.
    git clone git@github.com:pavankramadugu/IAAS.git
    ```
 
-2. Add AWS account access and secret keys here at,
+2. Add AWS account access and secret keys here at,  
 
    `AppTier`: [AppTierProperties](https://github.com/pavankramadugu/IAAS/blob/master/AppTier/src/main/java/com/cc/app/properties/AppTierProperties.java), `WebTier`: [Config.py](https://github.com/pavankramadugu/IAAS/blob/feature/flask-webTier/WebTier-Flask/config.py)
 
@@ -56,7 +56,7 @@ Steps to install and set up the app.
    ```
    nohup python3 -m flask run > output.log &
    ```
-
+   
 5. Tail the server logs using, ```tail -f output.log```
 
 
@@ -96,14 +96,14 @@ We installed OpenStack on Ubuntu with the use of DevStack. Devstack is a series 
     ```
    https://server-ip/dashboard
    ```
-
+   
 After Installing Openstack, We need to create an Instance. Following steps are to be done to create an instance.
 
 1. Create a Private Network.
    To create a private network, begin by navigating to Project -> Network -> Networks.
    Load the form to create a network, by navigating to Create Network near the top right.
    ![Image1](https://creodias.eu/documents/20195/74031/a3.png/5f391ced-2d9e-4a44-9902-69db1928df43?t=1552980724603)
-   Define your Network Name and tick two checkboxes: Enable Admin State and Create Subnet. Go to Next.
+    Define your Network Name and tick two checkboxes: Enable Admin State and Create Subnet. Go to Next.
    ![Image2](https://openmetal.io/docs/manuals/assets/images/network-form-6286d9b525c127740fdae8e1da6041be.png)
    Next, move on to the Subnet tab of this form.    Define your Subnet name. Assign a valid network address with mask presented as a prefix. (This number determines how many bytes are being destined for network address) Define Gateway IP for your Router. Normally it’s the first available address in the subnet.
    ![Image3](https://openmetal.io/docs/manuals/assets/images/network-form-subnet-e3c25600ef39acabe452f8cfe1d8c0ab.png)
@@ -137,8 +137,6 @@ Using the floating IP, SSH into the instance and Launch the WebTier server.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-Openstack Url: http://34.85.189.64/dashboard/project/instances/
 
 The app should take images received from users as input and perform image recognition on these images using the provided deep learning model. It should also return the recognition result (the top 1 result from the provided model) as output to the users. The input is a .png file, and the output is the prediction result. For example, the user uploads an image named “test_0.JPEG”. For the above request, the output should be “bathtub” in plain text.
 

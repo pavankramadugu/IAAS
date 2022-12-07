@@ -1,21 +1,21 @@
 sqs:
   queue:
-    request: https://sqs.us-east-1.amazonaws.com/507560498503/iaas-request-sqs
-    response: https://sqs.us-east-1.amazonaws.com/507560498503/iaas-response-sqs
+    request: https://sqs.us-east-1.amazonaws.com/867386276772/request
+    response: https://sqs.us-east-1.amazonaws.com/867386276772/response
 
 s3:
   bucket:
-    request: iaas-546-request-bucket
-    response: iaas-546-response-bucket
+    request: openstack-546-request-bucket
+    response: openstack-546-response-bucket
 
 login:
   access:
   secret:
   keypair: 546-KeyPair
-  sg: sg-04dfc566df55fb731
+  sg: sg-025612337724c49d7
 
 ami:
-  id: ami-0dbce3445c08c89cf
+  id: ami-037b9a6ecfacdbc39
 
 ec2:
-  max-instances: 19
+  max-instances: 20
