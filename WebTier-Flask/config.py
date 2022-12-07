@@ -1,13 +1,13 @@
 properties = {
-    "REQUEST_SQS": "https://sqs.us-east-1.amazonaws.com/867386276772/request",
-    "RESPONSE_SQS": "https://sqs.us-east-1.amazonaws.com/867386276772/response",
-    "REQUEST_S3": "openstack-546-request-bucket",
-    "RESPONSE_S3": "openstack-546-response-bucket",
+    "REQUEST_SQS": "https://sqs.us-east-1.amazonaws.com/501410091785/request",
+    "RESPONSE_SQS": "https://sqs.us-east-1.amazonaws.com/501410091785/response",
+    "REQUEST_S3": "openstack-request",
+    "RESPONSE_S3": "openstack-response",
     "ACCESS_KEY": "",
     "SECRET_KEY": "",
     "KEY_PAIR": "546-KeyPair",
-    "SG": "sg-025612337724c49d7",
-    "AMI_ID": "ami-037b9a6ecfacdbc39",
+    "SG": "sg-083ae66a1b826a1e7",
+    "AMI_ID": "ami-0c287ee091fb5747b",
     "MAX_INSTANCES": 20
 }
 

@@ -64,8 +64,6 @@ for i, name in enumerate(os.listdir(image_folder)):
         break
     image_path_list.append(str(image_folder) + "/" + name)
 
-print("image_list", image_path_list)
-
 with ThreadPoolExecutor(max_workers=num_max_workers) as executor:
     for result in executor.map(send_one_request, image_path_list):
         print(result)
